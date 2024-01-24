@@ -16,6 +16,10 @@ export class AppComponent implements OnInit {
     private listaService: ListaDeCompraService
   ) { }
 
+  /*
+  O OnInit é o primeiro a ser chamado caso o componente/diretiva não tenha propriedades de entrada de dados,
+  pois aí ele passa a ser o segundo gancho a ser chamado depois do OnChanges.
+  E é um bom momento para criar lógicas de inicialização, como realizar Observable ou iniciar propriedades.*/
   ngOnInit(): void {
     this.listaDeCompra = this.listaService.getListaDeCompra()
     console.log(this.listaDeCompra);
