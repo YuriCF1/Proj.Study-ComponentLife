@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListaDeCompraService } from 'src/app/service/lista-de-compra.service';
 
 @Component({
   selector: 'app-input',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputComponent implements OnInit {
 
-  constructor() { }
+  itemValue!: string;
+
+  constructor(private service: ListaDeCompraService) { }
 
   ngOnInit(): void { }
+
+  adicionarItem() {
+    this.service.addItemIntoList(this.itemValue)
+  }
+
+  clearInput() {
+    this.itemValue = ''
+  }
 }
