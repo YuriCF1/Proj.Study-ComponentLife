@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ListaDeCompraService {
+export class listservice {
 
   private listaDeCompra: ItemInterface[] = [
     {
@@ -36,11 +36,16 @@ export class ListaDeCompraService {
   }
 
   createItem(itemName: string) {
+    const dataAtual = new Date();
+
+    let diaDaSemanaEmPortugues = dataAtual.toLocaleDateString('pt-BR', { weekday: 'long', timeZone: 'America/Sao_Paulo' });
+
+    diaDaSemanaEmPortugues = diaDaSemanaEmPortugues.charAt(0).toUpperCase() + diaDaSemanaEmPortugues.slice(1);
     const id = this.listaDeCompra.length + 1
     const item: ItemInterface = {
       id: id,
       nome: itemName,
-      data: new Date().toLocaleString('pt-BR'),
+      data: `${diaDaSemanaEmPortugues} ${new Date().toLocaleString('pt-BR')}`,
       comprado: false
     }
     return item
@@ -50,5 +55,23 @@ export class ListaDeCompraService {
     const item = this.createItem(itemName)
     this.listaDeCompra.push(item)
 
+  }
+
+  editItemInList(oldItem: ItemInterface, newNameEdit: string) {
+    const dataAtual = new Date();
+
+    let diaDaSemanaEmPortugues = dataAtual.toLocaleDateString('pt-BR', { weekday: 'long', timeZone: 'America/Sao_Paulo' });
+
+    diaDaSemanaEmPortugues = diaDaSemanaEmPortugues.charAt(0).toUpperCase() + diaDaSemanaEmPortugues.slice(1);
+
+    const editedItem: ItemInterface = {
+      id: oldItem.id,
+      nome: newNameEdit,
+      data: `${diaDaSemanaEmPortugues} (${new Date().toLocaleString('pt-BR')})`,
+      comprado: oldItem.comprado
+    }
+
+    const id = oldItem.id
+    this.listaDeCompra.splice(Number(id) - 1, 1, editedItem) //Percorrer o array, -1. E remover apenas 1, no caso, ele mesmo. E substituindo pelo item editadoz
   }
 }
