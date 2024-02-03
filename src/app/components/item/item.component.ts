@@ -23,6 +23,7 @@ export class ItemComponent implements OnInit, OnChanges {
 
   }
 
+  // 2 - Emitindo a propriedade para o componenten pai
   editItem() {
     this.emitindoItemParaEditar.emit(this.item);
   }
