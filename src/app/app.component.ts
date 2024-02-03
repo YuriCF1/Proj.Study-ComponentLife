@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemInterface } from './interfaces/iItem';
-import { ListaDeCompraService } from './service/lista-de-compra.service';
+import { listservice } from './service/lista-de-compra.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   itemToBeEdit!: ItemInterface
 
   constructor(
-    private listaService: ListaDeCompraService
+    private listaService: listservice
   ) { }
 
   /*
