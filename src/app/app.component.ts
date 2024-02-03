@@ -9,8 +9,9 @@ import { ListaDeCompraService } from './service/lista-de-compra.service';
 })
 export class AppComponent implements OnInit {
   title = 'app-lista-de-compras';
-
   listaDeCompra!: Array<ItemInterface>
+
+  itemToBeEdit!: ItemInterface
 
   constructor(
     private listaService: ListaDeCompraService
@@ -25,4 +26,8 @@ export class AppComponent implements OnInit {
     console.log(this.listaDeCompra);
   }
 
+  // 4 - Pegando o evento em itemClicked e alterando o valor da propriedade itemToBeEedit
+  editarItem(itemClicked: ItemInterface) {
+    this.itemToBeEdit = itemClicked;
+  }
 }
