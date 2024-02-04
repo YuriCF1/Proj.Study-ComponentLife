@@ -6,29 +6,33 @@ import { Injectable } from '@angular/core';
 })
 export class listservice {
 
-  private listaDeCompra: ItemInterface[] = [
-    {
-      "id": 1,
-      "nome": "Queijo prato",
-      "data": "Segunda-feira (31/10/2022) às 08:30",
-      "comprado": false
-    },
-    {
-      "id": 2,
-      "nome": "Leite integral",
-      "data": "Segunda-feira (31/10/2022) às 08:30",
-      "comprado": false
-    },
-    {
-      "id": 3,
-      "nome": "Mamão papaia",
-      "data": "Segunda-feira (31/10/2022) às 08:30",
-      "comprado": true
-    },
-  ]
+  // private listaDeCompra: ItemInterface[] = [
+  //   {
+  //     "id": 1,
+  //     "nome": "Queijo prato",
+  //     "data": "Segunda-feira (31/10/2022) às 08:30",
+  //     "comprado": false
+  //   },
+  //   {
+  //     "id": 2,
+  //     "nome": "Leite integral",
+  //     "data": "Segunda-feira (31/10/2022) às 08:30",
+  //     "comprado": false
+  //   },
+  //   {
+  //     "id": 3,
+  //     "nome": "Mamão papaia",
+  //     "data": "Segunda-feira (31/10/2022) às 08:30",
+  //     "comprado": true
+  //   },
+  // ]
+
+  private listaDeCompra: ItemInterface[]
 
   constructor() {
-    console.log('Instanciando dependências necessárias para o serviço.');
+    // console.log('Instanciando dependências necessárias para o serviço.');
+    this.listaDeCompra = JSON.parse(localStorage.getItem('itens') || '');
+
   }
 
   getListaDeCompra() {
