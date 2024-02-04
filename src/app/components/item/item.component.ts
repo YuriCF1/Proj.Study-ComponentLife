@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ItemInterface } from 'src/app/interfaces/iItem';
 
@@ -26,5 +26,13 @@ export class ItemComponent implements OnInit, OnChanges {
   // 2 - Emitindo a propriedade para o componenten pai
   editItem() {
     this.emitindoItemParaEditar.emit(this.item);
+  }
+
+  checarItem() {
+    if (this.item.comprado == true) {
+      this.item.comprado = false;
+    } else {
+      this.item.comprado = true;
+    }
   }
 }
