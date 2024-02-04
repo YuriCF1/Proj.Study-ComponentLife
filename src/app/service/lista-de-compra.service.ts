@@ -31,7 +31,7 @@ export class listservice {
 
   constructor() {
     // console.log('Instanciando dependências necessárias para o serviço.');
-    this.listaDeCompra = JSON.parse(localStorage.getItem('itens') || '');
+    this.listaDeCompra = JSON.parse(localStorage.getItem('itens') || '[]');
 
   }
 
@@ -58,7 +58,7 @@ export class listservice {
   addItemIntoList(itemName: string) {
     const item = this.createItem(itemName)
     this.listaDeCompra.push(item)
-
+    this.updateLocalStorage()
   }
 
   editItemInList(oldItem: ItemInterface, newNameEdit: string) {
@@ -77,5 +77,11 @@ export class listservice {
 
     const id = oldItem.id
     this.listaDeCompra.splice(Number(id) - 1, 1, editedItem) //Percorrer o array, -1. E remover apenas 1, no caso, ele mesmo. E substituindo pelo item editadoz
+
+    this.updateLocalStorage()
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem('itens', JSON.stringify(this.listaDeCompra))
   }
 }
