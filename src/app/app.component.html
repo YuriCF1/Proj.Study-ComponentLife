@@ -4,10 +4,18 @@
   <div class="container">
     <div class="lista">
       <h4 class="title-list">Lista de Compras</h4>
-      <div *ngFor="let item of listaDeCompra">
-        <!-- 3 - Componente pai ouvindo a propriedade emitida, e chamando a função dentro dele mesmo, passando o evento -->
-      <app-item [item]="item" (emitindoItemParaEditar)="editarItem($event)"></app-item>
+      <div *ngIf="listaDeCompra.length !== 0; else naoTemItem">
+        <div *ngFor="let item of listaDeCompra">
+          <!-- 3 - Componente pai ouvindo a propriedade emitida, e chamando a função dentro dele mesmo, passando o evento -->
+          <app-item
+            [item]="item"
+            (emitindoItemParaEditar)="editarItem($event)"
+          ></app-item>
+        </div>
       </div>
+      <ng-template #naoTemItem>
+        <small>Não há item</small>
+      </ng-template>
     </div>
   </div>
 </section>
