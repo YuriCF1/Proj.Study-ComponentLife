@@ -14,6 +14,7 @@ export class ItemComponent implements OnInit, OnChanges {
 
   @Input() item!: ItemInterface
   @Output() emitindoItemParaEditar = new EventEmitter();
+  @Output() emitindoIdParaDeletar = new EventEmitter();
 
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
@@ -34,5 +35,10 @@ export class ItemComponent implements OnInit, OnChanges {
     } else {
       this.item.comprado = true;
     }
+  }
+
+  deleteItem() {
+    console.log('Estao tentando me calar');
+    this.emitindoIdParaDeletar.emit(this.item.id)
   }
 }
