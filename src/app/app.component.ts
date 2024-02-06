@@ -34,13 +34,18 @@ export class AppComponent implements OnInit, DoCheck {
   deletarItem(id: number) {
     const index = this.listaDeCompra.findIndex((item) => item.id === id) //Caso o item.id for igual ao id, ele será quardado dentro da variável
     this.listaDeCompra.splice(index, 1)
+  }
 
+  clearList() {
+    this.listaDeCompra = []
   }
 
   ngDoCheck(): void {
+    // É bom para cancelar a inscrição de um service
     console.log('DoCheck chamado. Atualizou LocalStorage');
     this.listaService.updateLocalStorage()
   }
+
 }
 
 
