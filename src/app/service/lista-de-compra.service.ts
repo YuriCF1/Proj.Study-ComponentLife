@@ -71,7 +71,7 @@ export class listservice {
     const editedItem: ItemInterface = {
       id: oldItem.id,
       nome: newNameEdit,
-      data: `${diaDaSemanaEmPortugues} (${new Date().toLocaleString('pt-BR')})`,
+      data: `${diaDaSemanaEmPortugues} ${new Date().toLocaleString('pt-BR')}`,
       comprado: oldItem.comprado
     }
 
