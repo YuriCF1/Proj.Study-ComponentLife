@@ -37,7 +37,8 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   clearList() {
-    this.listaDeCompra = []
+    this.listaService.clearAllList()
+    this.listaDeCompra = this.listaService.getListaDeCompra()
   }
 
   ngDoCheck(): void {
