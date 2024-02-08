@@ -34,6 +34,7 @@ Add whatever you want, and it'll be saved in Local Storage
 - [ X ] ngClass
 - [ X ] Clear List
 
+### Example
 <img src="https://raw.githubusercontent.com/YuriCF1/Proj.Study-ComponentLife/39b0a6a7f0cd6d94817a4f199e4e1b908bf7f58a/src/assets/example.png" alt="imagem do site">
 
 ## 🤝 Colaborators
