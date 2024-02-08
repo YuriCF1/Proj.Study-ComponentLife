@@ -32,7 +32,6 @@ export class listservice {
   constructor() {
     // console.log('Instanciando dependências necessárias para o serviço.');
     this.listaDeCompra = JSON.parse(localStorage.getItem('itens') || '[]');
-
   }
 
   getListaDeCompra() {
@@ -83,5 +82,10 @@ export class listservice {
 
   updateLocalStorage() {
     localStorage.setItem('itens', JSON.stringify(this.listaDeCompra))
+  }
+
+  clearAllList() {
+    this.listaDeCompra = []
+    this.updateLocalStorage()
   }
 }
