@@ -29,6 +29,7 @@ export class InputComponent implements OnInit, OnChanges {
 
   adicionarItem() {
     this.listservice.addItemIntoList(this.itemValue)
+    this.clearInput()
   }
 
   clearInput() {
