@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
 import { ItemInterface } from './interfaces/iItem';
 import { listservice } from './service/lista-de-compra.service';
 
@@ -7,7 +7,20 @@ import { listservice } from './service/lista-de-compra.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit, DoCheck {
+
+  // ESCUTAR EVENTOS ALEATÓRIOS
+  secretCode = '';
+  @HostListener('window:keyup', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.secretCode += event.key;
+    if (this.secretCode.toLowerCase() === 'yuri') {
+      alert('Código secreto correto, contratando Yuri');
+      this.secretCode = '';
+    }
+  }
+
   title = 'app-lista-de-compras';
   listaDeCompra!: Array<ItemInterface>
 
@@ -46,7 +59,6 @@ export class AppComponent implements OnInit, DoCheck {
     console.log('DoCheck chamado. Atualizou LocalStorage');
     this.listaService.updateLocalStorage()
   }
-
 }
 
 
